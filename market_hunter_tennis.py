@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Market Hunter Tennis – Mercoledì Edition
+Market Hunter Tennis – Lunedì Edition (finestra 17-19 UTC)
 """
 
 import os, json, csv, logging, requests, sys
 from datetime import datetime, date, timedelta
 
-API_KEY = os.environ["API_KEY"]
+RAPIDAPI_KEY = os.environ["RAPIDAPI_KEY"]
 TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
 TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
@@ -18,7 +18,7 @@ MAX_CRASH_ODD = 1.80
 QUOTA_MINIMA_DOPO_CRASH = 1.30
 HOURS_BEFORE_KICKOFF = 2
 
-TARGET_WEEKDAY = 2   # mercoledì
+TARGET_WEEKDAY = 0   # lunedì
 
 def is_monitoring_window():
     now = datetime.utcnow()
@@ -49,7 +49,7 @@ def save_json(filename, data):
 def fetch_events():
     url = "https://odds-feed.p.rapidapi.com/api/v1/events"
     headers = {
-        "x-rapidapi-key": API_KEY,
+        "x-rapidapi-key": RAPIDAPI_KEY,
         "x-rapidapi-host": "odds-feed.p.rapidapi.com"
     }
     params = {
@@ -262,7 +262,7 @@ if __name__ == "__main__":
         logging.info("Fuori dalla finestra di monitoraggio. Esco.")
         sys.exit(0)
 
-    logging.info("Market Hunter Tennis (Mercoledì) started")
+    logging.info("Market Hunter Tennis (Lunedì) started")
 
     state = load_json("state.json")
     bets = load_json("bets.json", [])
