@@ -1,4 +1,4 @@
-name: Market Hunter Tennis Lunedì   # cambia per martedì/mercoledì
+name: Market Hunter Tennis Lunedì
 
 on:
   repository_dispatch:
@@ -28,7 +28,7 @@ jobs:
             tennis-${{ runner.os }}-
       - name: Run scanner
         env:
-          API_KEY: ${{ secrets.API_KEY }}
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python market_hunter_tennis.py
