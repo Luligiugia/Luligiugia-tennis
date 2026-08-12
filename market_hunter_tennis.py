@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Market Hunter Tennis – Lunedì Edition (finestra 17-19 UTC)
+Market Hunter Tennis – Lunedì Edition (ottimizzato)
 """
 
 import os, json, csv, logging, requests, sys
@@ -10,15 +10,15 @@ RAPIDAPI_KEY = os.environ["RAPIDAPI_KEY"]
 TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
 TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
-PRE_CRASH_THRESHOLD_PERCENT = 15
-FULL_CRASH_THRESHOLD_PERCENT = 25
-MAX_MINUTES_CRASH_WINDOW = 10
-MIN_STARTING_ODD = 1.80
+PRE_CRASH_THRESHOLD_PERCENT = 10
+FULL_CRASH_THRESHOLD_PERCENT = 18
+MAX_MINUTES_CRASH_WINDOW = 20
+MIN_STARTING_ODD = 1.60
 MAX_CRASH_ODD = 1.80
 QUOTA_MINIMA_DOPO_CRASH = 1.30
 HOURS_BEFORE_KICKOFF = 2
 
-TARGET_WEEKDAY = 2   # mercoledì
+TARGET_WEEKDAY = 2
 
 def is_monitoring_window():
     now = datetime.utcnow()
